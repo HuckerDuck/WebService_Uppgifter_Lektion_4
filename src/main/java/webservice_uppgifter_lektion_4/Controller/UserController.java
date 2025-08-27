@@ -32,6 +32,8 @@ public class UserController {
     //! Definiera ett username
     //! Returtypen kan se ut se här:
     //! Return new User(0, username, “123”, true)
+
+    //! public, vad du vill returnera, metodnamn, (@PathVariable String sen namnet)
     @GetMapping(value="/users/name/{username}")
     public User getByName(@PathVariable String username){
         return new User(0, username, "Lösenord123", true);
@@ -40,7 +42,7 @@ public class UserController {
 
 
     @GetMapping(value="/users")
-    public void getUsers() {
+    public List<User> getUsers() {
         System.out.println();
         System.out.println("Users in the list: ");
         System.out.println();
@@ -48,6 +50,10 @@ public class UserController {
 
             System.out.println(FormaterOfUser.format(user));
         }
+
+        //! La till så att jag även får ut i json.
+        //! Från void till en med retur
+        return userList;
     }
 
     @PostMapping(value= "/users")
@@ -79,6 +85,8 @@ public class UserController {
         }
         return null;
     }
+
+
 
 
 
