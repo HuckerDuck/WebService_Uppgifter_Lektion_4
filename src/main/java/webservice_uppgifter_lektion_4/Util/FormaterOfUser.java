@@ -16,7 +16,7 @@ public class FormaterOfUser {
 
     public static String format(User user){
         return    "ID: " + REDCOLOUR + user.id() + WHITE + ", " +
-                "och namnet i listan är: " + REDCOLOUR + user.name() + WHITE;
+                "och namnet i listan är: " + REDCOLOUR + user.username() + WHITE;
 
     }
 

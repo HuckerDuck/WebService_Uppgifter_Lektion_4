@@ -13,13 +13,31 @@ import java.util.List;
 public class UserController {
     List<User> userList = new ArrayList<>(
             (Arrays.asList(
-                    new User(0, "Benny"),
-                    new User(1, "Fredrik"),
-                    new User(2, "Leif"),
-                    new User(3, "Anton"),
-                    new User(4, "Frida")
+                    new User(0, "lösenord123", "Benny", true),
+                    new User(1,  "lösenord123", "Fredrik", true),
+                    new User(2, "lösenord123", "Leif", false),
+                    new User(3, "lösenord123", "Anton", true),
+                    new User(4, "lösenord123", "Frida", true)
             ))
     );
+    //! Uppgift 3
+    //! Åkalla User
+    //! Lägg in en return som också lägger in en ny user
+    @GetMapping(value="/newuser")
+    public User newUser(){
+        return new User( 5, "Kalle Åberg", "Lösenord123", true);
+    }
+
+    //! Uppgift 4
+    //! Definiera ett username
+    //! Returtypen kan se ut se här:
+    //! Return new User(0, username, “123”, true)
+    @GetMapping(value="/users/name/{username}")
+    public User getByName(@PathVariable String username){
+        return new User(0, username, "Lösenord123", true);
+    }
+
+
 
     @GetMapping(value="/users")
     public void getUsers() {
@@ -34,7 +52,7 @@ public class UserController {
 
     @PostMapping(value= "/users")
     public void CreateUser(){
-        userList.add(new User(userList.size(), "DeBugging"));
+        userList.add(new User(userList.size(), "DeBugging", "debuggingPassword", true));
     }
 
     //! Hämta baserat på ett värde
